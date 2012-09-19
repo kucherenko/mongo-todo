@@ -30,7 +30,7 @@ $classLoader->register();
 
 $config = new Configuration();
 
-$config->setDefaultDB('blog_db');
+$config->setDefaultDB('todos');
 
 $config->setProxyDir(__DIR__ . '/cache/proxies');
 $config->setProxyNamespace('Proxies');
