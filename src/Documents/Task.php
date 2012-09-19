@@ -35,8 +35,8 @@ class Task
 
     /**
      * order position
-     * @var \DateTime
-     * @ODM\Date
+     * @var int
+     * @ODM\Int
      */
     private $order;
 
@@ -45,5 +45,63 @@ class Task
      * @ODM\Boolean
      */
     private $done;
+
+    public function setDone($done)
+    {
+        $this->done = $done;
+    }
+
+    public function getDone()
+    {
+        return $this->done;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \DateTime $order
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
 }

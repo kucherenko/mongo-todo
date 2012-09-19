@@ -241,7 +241,7 @@ $(function(){
     sync: function() {
         console.log(Todos);
         Backbone.ajaxSync('create', Todos, {
-           'url': 'save.php'
+           'url': 'server.php'
         });
     }
 
