@@ -1,6 +1,6 @@
 <?php
 /**
- * Save information from
+ * Save information from todos frontend
  *
  * User: Andrey Kucherenko
  * Date: 19.09.12
@@ -51,13 +51,15 @@ switch ($requestMethod) {
         break;
 
     case 'DELETE':
-        $task = json_decode($requestBody, true);
-        var_dump($task);
+        $id = $_GET['id'];
+        /**
+         * Query for remove task with $id
+         */
         /** @var \Documents\Task $taskObject  */
         $query = $dm->createQueryBuilder('Documents\Task')
             ->remove()
             ->field('id')
-            ->equals($task['id'])
+            ->equals($id)
             ->getQuery()
             ->execute();
         $response = '{}';
@@ -65,6 +67,9 @@ switch ($requestMethod) {
 
     default:
     case 'GET':
+        /**
+         * Get all tasks from MongoDB
+         */
         $tasks = $dm->createQueryBuilder('Documents\Task')->getQuery()->execute();
         $todos = array();
         foreach ($tasks as $task) {
@@ -79,5 +84,4 @@ switch ($requestMethod) {
         $response = json_encode($todos);
         break;
 }
-
 echo $response;

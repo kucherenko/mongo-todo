@@ -14,7 +14,7 @@ $(function () {
     var Todo = Backbone.Model.extend({
 
         //url for sync tasks with server
-        url: 'todo.php?',
+        url: 'todo.php',
 
         // Default attributes for the todo item.
         defaults:function () {
@@ -40,6 +40,14 @@ $(function () {
         // Remove this Todo from *localStorage* and delete its view.
         clear:function () {
             this.destroy();
+        },
+
+        sync: function(method, model, options) {
+            options = options || {};
+            if (method === 'delete') {
+                options.url = 'todo.php?id=' + model.id
+            }
+            Backbone.sync(method, model, options);
         }
 
     });
